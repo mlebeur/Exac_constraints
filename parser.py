@@ -10,7 +10,9 @@ def load_Exac_constraints(data_folder):
     results = {}
     for rec in dat:
         _id = rec["symbol"]
-        process_key = lambda k: k.replace(" ","_").lower()\nrec = dict_convert(rec,keyfn=process_key)\nresults.setdefault(_id,[]).append(rec)
+        process_key = lambda k: k.replace(" ","_").lower()
+        rec = dict_convert(rec,keyfn=process_key)
+        results.setdefault(_id,[]).append(rec)
     for _id,docs in results.items():
         doc = {"_id": _id, "Exac_constraints" : docs}
         yield doc
